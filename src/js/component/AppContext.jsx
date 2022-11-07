@@ -5,15 +5,19 @@ export const AppContext = React.createContext(null);
 export const ContextWrapper = ({children}) => {
 
     const defaultState = {
-        contacts: []
+        contacts: [],
+        showAddUserForm: false,
+        showDeleteUserModal: false
     };
 
     const [store, dispatch] = useReducer(reducer, defaultState);
 
     function reducer(state, action) {
         switch (action.type) {
-            case '1':
-                return;
+            case 'showAddUserForm':
+                return {...state, showAddUserForm: action.payload};
+            case 'showDeleteUserModal':
+                return {...state, showDeleteUserModal: action.payload};
             default:
                 throw new Error(`Case ${action.type} not found in reducer function.`);
         }
