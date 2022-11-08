@@ -7,7 +7,7 @@ const AddContactBtn = () => {
 
     return (
         <button
-            className='btn btn-success align-self-end'
+            className='btn btn-success my-3'
             onClick={e => dispatch({type: 'showAddUserForm', payload: true})}
         >
             Add new contact
