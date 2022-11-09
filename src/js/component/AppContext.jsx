@@ -7,8 +7,10 @@ export const ContextWrapper = ({children}) => {
     const defaultState = {
         contacts: [],
         agendas: [],
+        selectedAgenda: '',
         showAddUserForm: false,
-        showDeleteUserModal: false
+        showDeleteUserModal: false,
+        showNewUserInput: false
     };
 
     const [store, dispatch] = useReducer(reducer, defaultState);
@@ -21,6 +23,10 @@ export const ContextWrapper = ({children}) => {
                 return {...state, showDeleteUserModal: action.payload};
             case 'fetchAgendas':
                 return {...state, agendas: action.payload};
+            case 'showNewUserInput':
+                return {...state, showNewUserInput: action.payload};
+            case 'selectAgenda':
+                return {...state, selectedAgenda: action.payload};
             default:
                 throw new Error(`Case ${action.type} not found in reducer function.`);
         }
