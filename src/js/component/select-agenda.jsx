@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from './AppContext.jsx';
-import { fetchAgendas } from '../async-functions.js';
+import { fetchAgendas, fetchContacts } from '../async-functions.js';
 
 const SelectAgenda = () => {
 
     const {store, dispatch} = useContext(AppContext);
-    const {agendas} = store;
+    const {agendas, selectedAgenda} = store;
 
     useEffect(() => {
 
@@ -13,14 +13,20 @@ const SelectAgenda = () => {
 
     }, [agendas]);
 
+    useEffect(() => {
+
+        if (selectedAgenda) fetchContacts(selectedAgenda).then(res => dispatch({type: 'fetchContacts', payload: res}));
+
+    }, [selectedAgenda])
+
     function handleSelect(event) {
         if (event.target.value === 'new') {
-            dispatch({type: 'showNewUserInput', payload: true});
+            dispatch({type: 'showNewAgendaInput', payload: true});
 
         } else {
 
             dispatch({type: 'selectAgenda', payload: event.target.value});
-            dispatch({type: 'showNewUserInput', payload: false});
+            dispatch({type: 'showNewAgendaInput', payload: false});
 
         }
     }

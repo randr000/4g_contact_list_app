@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from './AppContext.jsx';
 
-const AddUserForm = () => {
+const AddContactForm = () => {
 
     const {dispatch} = useContext(AppContext);
 
@@ -30,10 +30,10 @@ const AddUserForm = () => {
                     <input type="text" className="form-control fs-5" id="address" placeholder="Enter address" required/>
                 </div>
                 <button type="submit" className="btn btn-primary fs-5">save</button>
-                <a href="#" className="link-primary fs-5" onClick={e => dispatch({type: 'showAddUserForm', payload: false})}>or get back to contacts</a>
+                <a href="#" className="link-primary fs-5" onClick={e => dispatch({type: 'showAddContactForm', payload: false})}>or get back to contacts</a>
             </form>
         </>
     );
 };
 
-export default AddUserForm;
+export default AddContactForm;

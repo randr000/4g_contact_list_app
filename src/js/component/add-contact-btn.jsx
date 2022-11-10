@@ -8,7 +8,7 @@ const AddContactBtn = () => {
     return (
         <button
             className='btn btn-success my-3 ms-auto'
-            onClick={e => dispatch({type: 'showAddUserForm', payload: true})}
+            onClick={e => dispatch({type: 'showAddContactForm', payload: true})}
         >
             Add new contact
         </button>

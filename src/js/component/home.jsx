@@ -2,30 +2,37 @@ import React, { useContext } from "react";
 import { AppContext } from './AppContext.jsx';
 import AddContactBtn from './add-contact-btn.jsx';
 import ContactList from './contact-list.jsx';
-import AddUserForm from "./add-user-form.jsx";
-import DeleteUserModal from "./delete-user-modal.jsx";
+import AddContactForm from "./add-contact-form.jsx";
+import DeleteContactModal from "./delete-contact-modal.jsx";
 import SelectAgenda from "./select-agenda.jsx";
 import NewAgendaInput from "./new-agenda-input.jsx";
 
 //create your first component
 const Home = () => {
 
-	const {store, dispatch} = useContext(AppContext);
-	const {showAddUserForm, showDeleteUserModal, showNewUserInput} = store;
+	const {store} = useContext(AppContext);
+	const {showAddContactForm, showDeleteContactModal, showNewAgendaInput, contacts} = store;
 
 	return (
 		<div className='container-fluid'>
-			{showDeleteUserModal ? <DeleteUserModal /> : null}
+			{showDeleteContactModal ? <DeleteContactModal /> : null}
 			{
-				showAddUserForm ?
-				<AddUserForm /> :
+				showAddContactForm ?
+				<AddContactForm /> :
 				<div className='d-flex flex-column mx-5 my-3'>
 					<div className='d-flex flex-start'>
 						<SelectAgenda />
-						{showNewUserInput ? <NewAgendaInput /> : null}
+						{showNewAgendaInput ? <NewAgendaInput /> : null}
 						<AddContactBtn />
 					</div>
-					<ContactList />
+					{
+						contacts.length === 0 ? 
+							showNewAgendaInput ?
+								<p>Enter new agenda</p> :
+								<p>No contacts for selected agenda found</p> :
+							<ContactList />
+					}
+					
 				</div>
 			}
 			

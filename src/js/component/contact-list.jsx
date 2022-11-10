@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Contact from './contact.jsx'
+import { AppContext } from './AppContext.jsx';
 
 const ContactList = () => {
 
+    const {store} = useContext(AppContext);
+    const {contacts} = store;
+
     return (
         <ul className='list-group mt-3'>
-            <Contact />
-            <Contact />
-            <Contact />
+            {contacts.map(contact => <Contact key={contact.id} contact={contact} />)}
         </ul>
     );
 };

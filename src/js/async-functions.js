@@ -11,3 +11,13 @@ export async function fetchAgendas() {
     }
 
 }
+
+export async function fetchContacts(agenda_slug) {
+
+    try {
+        const contacts = await fetch(`${agendaEndpoint}/${agenda_slug}`);
+        return contacts.json();
+    } catch (err) {
+        throw new Error(`Error in fecthing contacts for agenda ${agenda_slug}`);
+    }
+}

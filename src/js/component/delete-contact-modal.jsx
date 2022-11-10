@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { AppContext } from './AppContext.jsx';
 
-const DeleteUserModal = () => {
+const DeleteContactModal = () => {
 
     const {store, dispatch} = useContext(AppContext);
 
     function toggleModal(deleteUser) {
-        dispatch({type: 'showDeleteUserModal', payload: false});
+        dispatch({type: 'showDeleteContactModal', payload: false});
         
         if (deleteUser) /* Add logic to actually delete user */;
     }
@@ -34,4 +34,4 @@ const DeleteUserModal = () => {
     );
 };
 
-export default DeleteUserModal;
+export default DeleteContactModal;
