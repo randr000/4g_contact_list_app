@@ -2,7 +2,6 @@
 
 ## https://4g-contact-list-app.vercel.app/
 
-# Buggy in Vercel but was working fine in Gitpod preview
 
 # Hello World with React boilerplate
 <p>

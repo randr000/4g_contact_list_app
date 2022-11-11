@@ -8,8 +8,10 @@ const AddContactForm = () => {
     const {showEditContact, contact, selectedAgenda} = store;
     const [contactForm, setContactForm] = useState({});
     
-    function handleSubmit() {
+    function handleSubmit(event) {
 
+        event.preventDefault();
+        
         const contactPayload = {
 
             full_name: contactForm.full_name,
