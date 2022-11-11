@@ -1,3 +1,9 @@
+# Live website can be found at
+
+## https://4g-contact-list-app.vercel.app/
+
+## Live website was working fine in Gitipod preview, it's a little buggy in after Vercal build
+
 # Hello World with React boilerplate
 <p>
   <a href="https://gitpod.io#https://github.com/4GeeksAcademy/react-hello.git"><img src="https://raw.githubusercontent.com/4GeeksAcademy/react-hello/master/open-in-gitpod.svg?sanitize=true" />
