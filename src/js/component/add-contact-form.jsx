@@ -10,17 +10,22 @@ const AddContactForm = () => {
     
     function handleSubmit() {
 
-        showEditContact ?
-        updateContact() :
+        const contactPayload = {
 
-        createContact({
             full_name: contactForm.full_name,
             email: contactForm.email,
             agenda_slug: selectedAgenda,
             address: contactForm.address,
             phone: contactForm.phone
-        }).then(res => res.ok ? fetchContacts(selectedAgenda) : null)
-        .then(res => dispatch({type: 'showAddContactForm', payload: {showAddContactForm: false}}));
+        };
+
+        (showEditContact ?
+
+        updateContact({...contactPayload, id: contact.id}) :
+
+        createContact(contactPayload))
+            .then(res => res.ok ? fetchContacts(selectedAgenda) : null)
+            .then(res => dispatch({type: 'showAddContactForm', payload: {showAddContactForm: false}}));
     }
 
     return (
