@@ -11,12 +11,12 @@ import DisplayMessage from "./display-message.jsx";
 //create your first component
 const Home = () => {
 
-	const {store,} = useContext(AppContext);
+	const {store, dispatch} = useContext(AppContext);
 	const {showAddContactForm, showDeleteContactModal, showNewAgendaInput, contacts, selectedAgenda} = store;
 
 	useEffect(() => {
 
-		if (selectedAgenda !== 'select' && selectedAgenda !== 'new' && contacts.length === 0) location.reload();
+		if (selectedAgenda !== 'select' && selectedAgenda !== 'new' && contacts.length === 0) dispatch({type: 'selectAgenda', payload: 'select'});
 
 	}, [contacts]);
 

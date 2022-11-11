@@ -30,14 +30,14 @@ const SelectAgenda = () => {
 
         }
     }
-    // console.log(selectedAgenda);
+    
     return (
 
         <select className="form-select form-select-lg mb-3 w-25" aria-label=".form-select-lg example" onChange={handleSelect}>
             <option value='select'>Select Agenda</option>
             <option value='new'>Create New Agenda</option>
             <option disabled="disabled">------------------------</option>
-            {agendas.map((agenda, i)=> <option key={i} value={agenda}>{agenda}</option>)}
+            {agendas.map((agenda)=> <option key={agenda} value={agenda}>{agenda}</option>)}
         </select>
   
     );
