@@ -17,7 +17,7 @@ const SelectAgenda = () => {
 
         if (selectedAgenda) fetchContacts(selectedAgenda).then(res => dispatch({type: 'fetchContacts', payload: res}));
 
-    }, [selectedAgenda])
+    }, [selectedAgenda]);
 
     function handleSelect(event) {
         if (event.target.value === 'new') {
@@ -30,7 +30,7 @@ const SelectAgenda = () => {
 
         }
     }
-
+    // console.log(selectedAgenda);
     return (
 
         <select className="form-select form-select-lg mb-3 w-25" aria-label=".form-select-lg example" onChange={handleSelect}>

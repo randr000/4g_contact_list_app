@@ -17,7 +17,7 @@ const Contact = ({contact}) => {
             </div>
             <div className='d-flex'>
                     <FontAwesomeIcon className="mx-5 my-4 fs-2" role="button" icon={faPencil} />
-                    <FontAwesomeIcon className="mx-5 my-4 fs-2" role="button" onClick={e => dispatch({type: 'showDeleteContactModal', payload: true})} icon={faTrashCan} />
+                    <FontAwesomeIcon className="mx-5 my-4 fs-2" role="button" onClick={e => dispatch({type: 'showDeleteContactModal', payload: {show: true, contactId: contact.id}})} icon={faTrashCan} />
             </div>
         </li>
     );

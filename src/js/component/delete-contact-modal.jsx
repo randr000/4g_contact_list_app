@@ -1,14 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext,  useEffect } from 'react';
 import { AppContext } from './AppContext.jsx';
+import { fetchContacts, deleteContact } from '../async-functions.js';
 
 const DeleteContactModal = () => {
-
+    
     const {store, dispatch} = useContext(AppContext);
+    const { contactId, selectedAgenda} = store;
+
 
     function toggleModal(deleteUser) {
-        dispatch({type: 'showDeleteContactModal', payload: false});
         
-        if (deleteUser) /* Add logic to actually delete user */;
+        if (deleteUser) {
+            deleteContact(contactId).then(res => res.ok ? 
+                fetchContacts(selectedAgenda).then(res => dispatch({type: 'fetchContacts', payload: res})) : 
+                null);
+        };
+
+        dispatch({type: 'showDeleteContactModal', payload: {show: false, contactId: ''}});
     }
 
     return (

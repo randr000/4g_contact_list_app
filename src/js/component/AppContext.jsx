@@ -6,6 +6,7 @@ export const ContextWrapper = ({children}) => {
 
     const defaultState = {
         contacts: [],
+        contactId: '',
         agendas: [],
         selectedAgenda: 'select',
         showAddContactForm: false,
@@ -20,7 +21,7 @@ export const ContextWrapper = ({children}) => {
             case 'showAddContactForm':
                 return {...state, showAddContactForm: action.payload};
             case 'showDeleteContactModal':
-                return {...state, showDeleteContactModal: action.payload};
+                return {...state, showDeleteContactModal: action.payload.show, contactId: action.payload.contactId};
             case 'fetchAgendas':
                 return {...state, agendas: action.payload};
             case 'fetchContacts':

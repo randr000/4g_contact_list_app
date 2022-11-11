@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from './AppContext.jsx';
 import AddContactBtn from './add-contact-btn.jsx';
 import ContactList from './contact-list.jsx';
@@ -11,8 +11,14 @@ import DisplayMessage from "./display-message.jsx";
 //create your first component
 const Home = () => {
 
-	const {store} = useContext(AppContext);
+	const {store,} = useContext(AppContext);
 	const {showAddContactForm, showDeleteContactModal, showNewAgendaInput, contacts, selectedAgenda} = store;
+
+	useEffect(() => {
+
+		if (selectedAgenda !== 'select' && selectedAgenda !== 'new' && contacts.length === 0) location.reload();
+
+	}, [contacts]);
 
 	return (
 		<div className='container-fluid'>
