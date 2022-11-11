@@ -22,6 +22,7 @@ const SelectAgenda = () => {
     function handleSelect(event) {
         if (event.target.value === 'new') {
             dispatch({type: 'showNewAgendaInput', payload: true});
+            dispatch({type: 'resetContacts'});
 
         } else {
 
@@ -37,7 +38,7 @@ const SelectAgenda = () => {
             <option value='select'>Select Agenda</option>
             <option value='new'>Create New Agenda</option>
             <option disabled="disabled">------------------------</option>
-            {agendas.map((agenda)=> <option key={agenda} value={agenda}>{agenda}</option>)}
+            {agendas.map((agenda) => <option key={agenda} value={agenda}>{agenda}</option>)}
         </select>
   
     );

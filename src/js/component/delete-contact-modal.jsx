@@ -5,18 +5,18 @@ import { fetchContacts, deleteContact } from '../async-functions.js';
 const DeleteContactModal = () => {
     
     const {store, dispatch} = useContext(AppContext);
-    const { contactId, selectedAgenda} = store;
+    const { contact, selectedAgenda} = store;
 
 
     function toggleModal(deleteUser) {
         
         if (deleteUser) {
-            deleteContact(contactId).then(res => res.ok ? 
+            deleteContact(contact.id).then(res => res.ok ? 
                 fetchContacts(selectedAgenda).then(res => dispatch({type: 'fetchContacts', payload: res})) : 
                 null);
         };
 
-        dispatch({type: 'showDeleteContactModal', payload: {show: false, contactId: ''}});
+        dispatch({type: 'showDeleteContactModal', payload: {show: false, contact: {}}});
     }
 
     return (

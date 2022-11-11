@@ -6,12 +6,13 @@ export const ContextWrapper = ({children}) => {
 
     const defaultState = {
         contacts: [],
-        contactId: '',
+        contact: {},
         agendas: [],
         selectedAgenda: 'select',
         showAddContactForm: false,
         showDeleteContactModal: false,
-        showNewAgendaInput: false
+        showNewAgendaInput: false,
+        showEditContact: false
     };
 
     const [store, dispatch] = useReducer(reducer, defaultState);
@@ -19,13 +20,15 @@ export const ContextWrapper = ({children}) => {
     function reducer(state, action) {
         switch (action.type) {
             case 'showAddContactForm':
-                return {...state, showAddContactForm: action.payload};
+                return {...state, ...action.payload};
             case 'showDeleteContactModal':
-                return {...state, showDeleteContactModal: action.payload.show, contactId: action.payload.contactId};
+                return {...state, showDeleteContactModal: action.payload.show, contact: action.payload.contact};
             case 'fetchAgendas':
                 return {...state, agendas: action.payload};
             case 'fetchContacts':
                 return {...state, contacts: action.payload};
+            case 'resetContacts':
+                return {...state, contacts: defaultState.contacts};
             case 'showNewAgendaInput':
                 return {...state, showNewAgendaInput: action.payload};
             case 'selectAgenda':

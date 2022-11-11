@@ -5,10 +5,14 @@ const AddContactBtn = () => {
 
     const {dispatch} = useContext(AppContext);
 
+    function handleClick() {
+        dispatch({type: 'showAddContactForm', payload: {showAddContactForm: true, showEditContact: false, contact: {}}});
+    }
+
     return (
         <button
             className='btn btn-success my-3 ms-auto'
-            onClick={e => dispatch({type: 'showAddContactForm', payload: true})}
+            onClick={handleClick}
         >
             Add new contact
         </button>

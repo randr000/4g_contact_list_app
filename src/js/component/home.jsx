@@ -7,18 +7,13 @@ import DeleteContactModal from "./delete-contact-modal.jsx";
 import SelectAgenda from "./select-agenda.jsx";
 import NewAgendaInput from "./new-agenda-input.jsx";
 import DisplayMessage from "./display-message.jsx";
+import DisplayAgenda from "./display-agenda.jsx";
 
 //create your first component
 const Home = () => {
 
 	const {store, dispatch} = useContext(AppContext);
 	const {showAddContactForm, showDeleteContactModal, showNewAgendaInput, contacts, selectedAgenda} = store;
-
-	useEffect(() => {
-
-		if (selectedAgenda !== 'select' && selectedAgenda !== 'new' && contacts.length === 0) dispatch({type: 'selectAgenda', payload: 'select'});
-
-	}, [contacts]);
 
 	return (
 		<div className='container-fluid'>
@@ -29,7 +24,7 @@ const Home = () => {
 				<div className='d-flex flex-column mx-5 my-3'>
 					<div className='d-flex flex-start'>
 						<SelectAgenda />
-						{showNewAgendaInput ? <NewAgendaInput /> : null}
+						{showNewAgendaInput ? <NewAgendaInput /> : <DisplayAgenda />}
 						<AddContactBtn />
 					</div>
 					{
