@@ -6,12 +6,13 @@ import AddContactForm from "./add-contact-form.jsx";
 import DeleteContactModal from "./delete-contact-modal.jsx";
 import SelectAgenda from "./select-agenda.jsx";
 import NewAgendaInput from "./new-agenda-input.jsx";
+import DisplayMessage from "./display-message.jsx";
 
 //create your first component
 const Home = () => {
 
 	const {store} = useContext(AppContext);
-	const {showAddContactForm, showDeleteContactModal, showNewAgendaInput, contacts} = store;
+	const {showAddContactForm, showDeleteContactModal, showNewAgendaInput, contacts, selectedAgenda} = store;
 
 	return (
 		<div className='container-fluid'>
@@ -27,9 +28,15 @@ const Home = () => {
 					</div>
 					{
 						contacts.length === 0 ? 
-							showNewAgendaInput ?
-								<p>Enter new agenda</p> :
-								<p>No contacts for selected agenda found</p> :
+							<DisplayMessage 
+								msg={
+										showNewAgendaInput ?
+										'Enter new agenda and add a new contact' :
+										selectedAgenda === 'select' ?
+											'Please select an agenda from the dropdown list' :
+											'No contacts for selected agenda found'
+									}
+							/> :
 							<ContactList />
 					}
 					

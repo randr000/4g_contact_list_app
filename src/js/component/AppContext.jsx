@@ -7,7 +7,7 @@ export const ContextWrapper = ({children}) => {
     const defaultState = {
         contacts: [],
         agendas: [],
-        selectedAgenda: '',
+        selectedAgenda: 'select',
         showAddContactForm: false,
         showDeleteContactModal: false,
         showNewAgendaInput: false
